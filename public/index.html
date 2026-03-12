@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>AstroLuz</title>
+  <style>
+    body { background: linear-gradient(#4B0082, #000); color: #D4AF37; font-family: Arial; text-align: center; padding: 20px; }
+    h1 { color: #D4AF37; }
+    form { max-width: 400px; margin: auto; }
+    input, button { margin: 10px; padding: 10px; width: 100%; }
+    button { background: #D4AF37; color: #4B0082; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>¿Problemas que se repiten?</h1>
+  <p>Conoce su propósito divino y sana hoy.</p>
+
+  <form action="/mini-carta" method="POST">
+    <input name="nombre" placeholder="Nombre completo" required>
+    <input name="email" type="email" placeholder="Email" required>
+    <input name="fecha" placeholder="Fecha nacimiento (dd/mm/aaaa)" required>
+    <input name="hora" placeholder="Hora nacimiento (hh:mm o desconocida)">
+    <input name="lugar" placeholder="Lugar nacimiento (ciudad, país)" required>
+    <button type="submit">Mini Carta GRATIS</button>
+  </form>
+
+  <p>#TodoTieneSuPropósito</p>
+</body>
+</html>
