@@ -2,28 +2,76 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>AstroLuz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstroLuz - Sanación Celestial</title>
+  <link rel="icon" href="logo.png" type="image/png">
   <style>
-    body { background: linear-gradient(#4B0082, #000); color: #D4AF37; font-family: Arial; text-align: center; padding: 20px; }
-    h1 { color: #D4AF37; }
-    form { max-width: 400px; margin: auto; }
-    input, button { margin: 10px; padding: 10px; width: 100%; }
-    button { background: #D4AF37; color: #4B0082; border: none; cursor: pointer; }
+    body {
+      background: linear-gradient(to bottom, #4B0082, #000);
+      color: #D4AF37;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      color: #D4AF37;
+      font-family: 'Playfair Display', serif;
+    }
+    p {
+      font-size: 1.1em;
+      line-height: 1.5;
+    }
+    form {
+      max-width: 400px;
+      margin: 30px auto;
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 12px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #D4AF37;
+      font-size: 1em;
+    }
+    button {
+      background: #D4AF37;
+      color: #4B0082;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #fff;
+      color: #4B0082;
+    }
+    img.logo {
+      max-width: 250px;
+      display: block;
+      margin: 20px auto;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
-  <h1>¿Problemas que se repiten?</h1>
-  <p>Conoce su propósito divino y sana hoy.</p>
-
+  <img src="logo.png" alt="AstroLuz Logo" class="logo">
+  <h1>¿Problemas que se repiten y no te dejan vivir?</h1>
+  <p>Respira hondo. Conoce mediante tu carta astral el significado divino de ese evento, cuál es su propósito y cómo sanarlo con la gracia de Dios. Sé feliz hoy.</p>
   <form action="/mini-carta" method="POST">
     <input name="nombre" placeholder="Nombre completo" required>
     <input name="email" type="email" placeholder="Email" required>
     <input name="fecha" placeholder="Fecha nacimiento (dd/mm/aaaa)" required>
     <input name="hora" placeholder="Hora nacimiento (hh:mm o desconocida)">
     <input name="lugar" placeholder="Lugar nacimiento (ciudad, país)" required>
-    <button type="submit">Mini Carta GRATIS</button>
+    <button type="submit">Recibir Mini Carta GRATIS</button>
   </form>
-
-  <p>#TodoTieneSuPropósito</p>
+  <p>Yo soy un canal. Uso IA como herramienta de mensaje sanador divino.</p>
+  <footer>
+    <img src="logoLuz.png" alt="AstroLuz Luz" class="logo" style="max-width: 150px;">
+    <p>Todo tiene su propósito. #TodoTieneSuPropósito</p>
+  </footer>
 </body>
 </html>
