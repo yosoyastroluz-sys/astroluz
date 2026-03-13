@@ -23,16 +23,21 @@
       line-height: 1.5;
     }
     form {
-      max-width: 400px;
+      max-width: 500px;
       margin: 30px auto;
     }
-    input, button {
+    input, textarea, button {
       margin: 10px 0;
       padding: 12px;
       width: 100%;
       border-radius: 5px;
       border: 1px solid #D4AF37;
       font-size: 1em;
+      box-sizing: border-box;
+    }
+    textarea {
+      height: 120px;
+      resize: vertical;
     }
     button {
       background: #D4AF37;
@@ -68,24 +73,37 @@
   <h1>¿Problemas que se repiten y no te dejan vivir?</h1>
   <p>Respira hondo. Conoce mediante tu carta astral el significado divino de ese evento, cuál es su propósito y cómo sanarlo con la gracia de Dios. Sé feliz hoy.</p>
 
+  <!-- Mini Carta GRATIS -->
+  <h2>Mini Carta Celestial – GRATIS</h2>
+  <p>Ingresa tus datos y recibe tu análisis básico + potenciador + oración. Puedes añadir una frase corta sobre lo que te acongoja (opcional).</p>
+
   <form action="/mini-carta" method="POST">
     <input name="nombre" placeholder="Nombre completo" required>
     <input name="email" type="email" placeholder="Email" required>
     <input name="fecha" placeholder="Fecha nacimiento (dd/mm/aaaa)" required>
     <input name="hora" placeholder="Hora nacimiento (hh:mm o desconocida)">
     <input name="lugar" placeholder="Lugar nacimiento (ciudad, país)" required>
+    <textarea name="problema" placeholder="¿Qué te acongoja? (opcional, una frase o pregunta corta)"></textarea>
     <button type="submit">Recibir Mini Carta GRATIS</button>
   </form>
-
-  <p>Yo soy un canal. Uso IA como herramienta de mensaje sanador divino.</p>
 
   <p class="oracion">
     “Y la paz de Dios, que sobrepasa todo entendimiento, guardará vuestros corazones y vuestros pensamientos en Cristo Jesús.”<br>
     Filipenses 4:7
   </p>
 
+  <h2>Carta Personalizada "Sanación Profunda" – 39 €</h2>
+  <p>Explica detalladamente tu situación (amor, dinero, autoestima, relaciones, miedos...). La carta será personalizada con qué te vino a enseñar, cómo transmutarlo y oración específica.</p>
+  <form action="/sanacion-profunda" method="POST">
+    <input name="nombre" placeholder="Nombre completo" required>
+    <input name="email" type="email" placeholder="Email" required>
+    <textarea name="detalle" placeholder="Cuéntame con detalle lo que te acongoja y quieres sanar..." rows="6" required></textarea>
+    <button type="submit">Comprar 39 €</button>
+  </form>
+
   <footer>
     <img src="logo.png" alt="AstroLuz Logo Inferior" class="logo" style="max-width: 150px;">
+    <p>Yo soy un canal. Uso IA como herramienta de mensaje sanador divino.</p>
     <p>Todo tiene su propósito. #TodoTieneSuPropósito</p>
   </footer>
 </body>
