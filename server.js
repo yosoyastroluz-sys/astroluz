@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,35 +24,24 @@ Todo tiene su propósito.
 Con amor,  
 Mensajera Celestial`;
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false, // false para 587 (STARTTLS)
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASS
-  },
-  tls: {
-    rejectUnauthorized: false // ignora certificados si hay problema
-  }
-});
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-  const mailOptions = {
-    from: process.env.GMAIL_USER,
+  const msg = {
     to: email,
+    from: 'yosoyastroluz@gmail.com', // tu email verificado
     subject: 'Tu Mini Carta Celestial ha llegado 🌟',
     text: mensaje
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error('Error al enviar email:', error);
-      res.status(500).send('Error al enviar email: ' + error.message);
-    } else {
-      console.log('Email enviado:', info.response);
+  sgMail.send(msg)
+    .then(() => {
+      console.log('Email enviado con SendGrid');
       res.send('Mini Carta enviada! Revisa tu email.');
-    }
-  });
+    })
+    .catch(error => {
+      console.error('Error SendGrid:', error);
+      res.status(500).send('Error al enviar: ' + error.message);
+    });
 });
 
 app.listen(process.env.PORT || 3000, () => console.log('Server on'));
