@@ -24,13 +24,18 @@ Todo tiene su propósito.
 Con amor,  
 Mensajera Celestial`;
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.GMAIL_USER,  // tu email: yosoyastroluz@gmail.com
-      pass: process.env.GMAIL_PASS   // la contraseña de aplicación de 16 letras SIN ESPACIOS
-    }
-  });
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false, // false para 587 (STARTTLS)
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS
+  },
+  tls: {
+    rejectUnauthorized: false // ignora certificados si hay problema
+  }
+});
 
   const mailOptions = {
     from: process.env.GMAIL_USER,
