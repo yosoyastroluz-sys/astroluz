@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,8 +12,42 @@ app.get('/', (req, res) => {
 
 app.post('/mini-carta', (req, res) => {
   const { nombre, email, fecha, hora, lugar } = req.body;
-  console.log('Nuevo envío:', { nombre, email, fecha, hora, lugar });
-  res.send('Mini Carta enviada! Revisa tu email pronto.');
+
+  const mensaje = `Hola ${nombre}!  
+
+Tu Mini Carta Celestial está en camino.  
+Naciste el ${fecha} a las ${hora} en ${lugar}.  
+
+Todo tiene su propósito.  
+#TodoTieneSuPropósito
+
+Con amor,  
+Mensajera Celestial`;
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GMAIL_USER,  // tu email: yosoyastroluz@gmail.com
+      pass: process.env.GMAIL_PASS   // la contraseña de aplicación de 16 letras SIN ESPACIOS
+    }
+  });
+
+  const mailOptions = {
+    from: process.env.GMAIL_USER,
+    to: email,
+    subject: 'Tu Mini Carta Celestial ha llegado 🌟',
+    text: mensaje
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error al enviar email:', error);
+      res.status(500).send('Error al enviar email: ' + error.message);
+    } else {
+      console.log('Email enviado:', info.response);
+      res.send('Mini Carta enviada! Revisa tu email.');
+    }
+  });
 });
 
 app.listen(process.env.PORT || 3000, () => console.log('Server on'));
